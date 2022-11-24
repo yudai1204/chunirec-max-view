@@ -55,9 +55,6 @@ window.addEventListener('load', function () {
             dom.classList.remove("hide2");
         }
     })
-    document.getElementById("displayScore").addEventListener("click", function () {
-        location.href=("index.html?username="+document.getElementById("username").value)
-    })
 });
 
 
@@ -68,7 +65,14 @@ function displayMyData() {
         const chunirecName = params.get('username');
         document.getElementById("username").value = chunirecName;
         if (chunirecName !== "") {
-            const userURL = "https://api.chunirec.net/2.0/records/showall.json?region=jp2&token=c8bae3934e20bc8e1f22cc549cd625859e14f317fef3c6f11596483672fc7b5dc9ba837b08a63754165479c4ce12edb9652bb6d83a119505f6c6ac87d4c9a33d&user_name=" + chunirecName;
+            const TOKENS = [
+                "7978c5f4537b221c5200dfe9554ba74ced4a86d09404b10d265d2bb1b25bcc9f453fb95e22b05ff1259ce4a622786721210849c196efd041c42ba32d9dbd8113",
+                "c8bae3934e20bc8e1f22cc549cd625859e14f317fef3c6f11596483672fc7b5dc9ba837b08a63754165479c4ce12edb9652bb6d83a119505f6c6ac87d4c9a33d",
+                "fa4984248de07b1062030e7fc8488131b099e16471a1e60e812f3463e09c6c89219e02348592e2e78d0d9b7e80b9494b363e396d4bc8d3a1a2e0f5604483d8da"
+            ];
+            const rnd = Math.floor(Math.random() * TOKENS.length);
+            console.log(TOKENS[(rnd==TOKENS.length)?0:rnd]);
+            const userURL = "https://api.chunirec.net/2.0/records/showall.json?region=jp2&token="+ TOKENS[(rnd==TOKENS.length)?0:rnd] +"&user_name=" + chunirecName;
             fetch(userURL, { cache: "no-cache" })
                 .then((response) => response.json())
                 .then((data) => {
