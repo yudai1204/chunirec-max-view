@@ -100,7 +100,7 @@ function displayMyData() {
                     if (error.code == 403) {
                         alert("読み込みに失敗しました。\nアカウントが非公開設定になっている可能性があります。");
                     } else {
-                        alert("読み込みに失敗しました。\nアカウントが存在しません。");
+                        alert("読み込みに失敗しました。\nアカウントが存在しないか、非公開設定になっている可能性があります。");
                     }
                     location.href = "index.html"
                 });
