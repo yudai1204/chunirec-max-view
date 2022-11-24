@@ -73,7 +73,7 @@ function displayMyData() {
                 .then((response) => response.json())
                 .then((data) => {
                     console.log('Success:', data);
-                    document.getElementById("thead").insertAdjacentHTML("beforeEnd", `<th>SCORE:${chunirecName}</th>`)
+                    document.getElementById("thead").insertAdjacentHTML("beforeEnd", `<th>SCORE</th>`)
                     for (const music of data.records) {
                         if (music.diff !== "MAS" && music.diff !== "ULT") continue;
                         const row = document.getElementById(music.id + "-" + ((music.diff === "MAS") ? "m" : "u"));
