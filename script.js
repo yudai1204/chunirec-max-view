@@ -73,12 +73,17 @@ function displayMyData() {
                 .then((response) => response.json())
                 .then((data) => {
                     console.log('Success:', data);
-                    document.getElementById("thead").insertAdjacentHTML("beforeEnd", `<th>SCORE</th>`)
+                    document.getElementById("thead").insertAdjacentHTML("beforeEnd", `<th class="scores">SCORE</th>`)
                     for (const music of data.records) {
                         if (music.diff !== "MAS" && music.diff !== "ULT") continue;
                         const row = document.getElementById(music.id + "-" + ((music.diff === "MAS") ? "m" : "u"));
                         row.insertAdjacentHTML("beforeEnd", `<td class="scores">${music.score}</td>`);
                         
+                    }
+                    for(const tr of document.querySelectorAll("tr")){
+                        if(!tr.querySelector(".scores")){
+                            tr.insertAdjacentHTML("beforeEnd", `<td class="scores">0</td>`);
+                        }
                     }
                     document.getElementById("loading").style.display = "none";
                     document.getElementById("filter").style.display = "block";

@@ -52,8 +52,10 @@
 	<h1 id="loading">Now Loading...</h1>
 	<div id="myscorefilter" style="display: none;">
 		<h4>自分のスコアを表に表示する</h4>
-		chunirec user name: <input id="username"><br>
-		<button id="displayScore">実行</button>
+		<form action="index.html" method="GET">
+		chunirec user name: <input id="username" name="username" type="text"><br>
+		<input type="submit" value="実行する">
+		</form>
 	</div>
 
 	<div id="filter" style="display:none;">
