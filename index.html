@@ -1,9 +1,16 @@
 <!DOCTYPE html>
+
 <head>
 	<meta charset="UTF-8" />
 	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
 		#sort_table {
 			border-collapse: collapse;
+			margin: 10px;
 		}
 
 		#sort_table td {
@@ -14,19 +21,56 @@
 			cursor: pointer;
 			background-color: lightgray;
 		}
+
+		#sort_table tr td:nth-child(1) {
+			max-width: 40vw;
+		}
+
+		#filter,#myscorefilter{
+			box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+			border-radius: 5px;
+			padding: 10px;
+			margin: 10px;
+		}
+
+		#filter div,#myscorefilter div{
+			border-top: 1px solid #ccc;
+			border-bottom: 1px solid #ccc;
+			margin:2px 0;
+		}
+		.lvinput{
+			width:3rem;
+		}
+		.hide,.hide2{
+			display:none;
+		}
 	</style>
 </head>
 
 <body>
 	<h1 id="loading">Now Loading...</h1>
+	<div id="myscorefilter" style="display: none;">
+		<h4>自分のスコアを表に表示する</h4>
+		chunirec user name: <input id="username"><br>
+		<button id="displayScore">実行</button>
+	</div>
 
-	<div id="filter">
+	<div id="filter" style="display:none;">
 		<h2>Filter</h2>
-
+		<div>
+			<h4>自分の理論値を除外する</h4>
+			<input type="checkbox" id="removeMyMax">
+		</div>
+		<div>
+			<h4>定数で絞り込む</h4>
+			<input type="number" class="lvinput" value="1.0" id="lvmin">~<input type="number" class="lvinput" value="15.4" id="lvmax"><br>
+		</div>
+		<button id="submit">絞り込む</button>
+		<button id="clearFilter">絞り込み全解除</button>
 	</div>
 
 	<table id="sort_table" style="display: none;">
-		<tr>
+		<tr id="thead">
 			<th>楽曲名</th>
 			<th>譜面定数</th>
 			<th>カテゴリ</th>
